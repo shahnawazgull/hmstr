@@ -1,11 +1,1281 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    hello
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="Cache-Control"
+          content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="icon"
+          type="image/svg+xml"
+          href="assets/icons/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+          rel="stylesheet" />
+    <title>HooksMaster.io</title>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/67be2f5a29b02f190e366dc8/1ikvehuql';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+    <script>
+      function adjustZoom() {
+        const screenWidth = window.innerWidth;
+        if (screenWidth >= 1400 && screenWidth <= 1599) {
+          document.body.style.zoom = "88%";
+        }
+        document.body.classList.remove("body-hidden");
+
+      }
+      document.addEventListener("DOMContentLoaded", adjustZoom);
+      document.addEventListener("resize", adjustZoom);
+      window.onload = function() {
+        adjustZoom();
+      };
+      const videoElements = document.querySelectorAll('.video.no-fullscreen');
+  
+  videoElements.forEach(videoElement => {
+    // Prevent fullscreen on double-click
+    videoElement.addEventListener('dblclick', (event) => {
+      event.preventDefault(); // Prevent fullscreen toggle on double-click
+    });
+
+    // Prevent fullscreen using requestFullscreen
+    videoElement.addEventListener('fullscreenchange', (event) => {
+      if (document.fullscreenElement === videoElement) {
+        document.exitFullscreen(); // Exit fullscreen if the video goes fullscreen
+      }
+    });
+
+    // Handle for Webkit browsers (like Safari)
+    videoElement.addEventListener('webkitfullscreenchange', () => {
+      if (document.webkitFullscreenElement === videoElement) {
+        document.webkitExitFullscreen(); // Exit fullscreen if video tries to enter fullscreen
+      }
+    });
+
+    // Make sure no fullscreen is requested through JavaScript on the video element
+    videoElement.requestFullscreen = function () {};  // Override the requestFullscreen method
+    videoElement.webkitRequestFullscreen = function () {};  // Override for WebKit browsers
+  });
+    </script>
+    <style>
+      a {
+        text-decoration: none;
+        color: #000000;
+      }
+
+      .card a {
+        text-decoration: none;
+      }
+
+      .contact-us-status {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 10px;
+        padding: 15px 20px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 19px;
+        animation-name: fadeOut;
+        animation-delay: 3s;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+          display: block;
+        }
+
+        to {
+          opacity: 0;
+          display: none;
+        }
+      }
+
+      .success {
+        background-color: #7ae7c7;
+      }
+
+      .error {
+        background-color: #ee6e68;
+      }
+
+      .portfolio-heading {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        text-align: center;
+      }
+
+      /* .tiktok-examples video {
+        height: 750px !important;
+      } */
+
+      /* .facebook-ig-examples video {
+        height: 650px !important;
+      } */
+
+      /* .youtube-examples video {
+        height: 290px !important;
+      } */
+
+      .hooks_section {
+        height: auto !important;
+      }
+  /* Reset and Box Sizing */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Hooks Section Styling */
+  .hooks_section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Title Styling */
+  .title {
+    text-align: center;
+    /* margin-bottom: 60px; */
+  }
+
+  .title h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+  }
+
+  .title h4 {
+    font-size: 1.2em;
+    color: #555;
+  }
+
+  .portfolio-heading {
+  font-size: 2em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+  /* Container Styling */
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px; /* Space between boxes */
+    justify-content: center;
+    margin-bottom: 60px;
+  }
+
+  /* Box Styling */
+  .box {
+    flex: 1 1 calc(33.333% - 40px); /* 3 per row with gaps */
+    max-width: calc(33.333% - 40px);
+  }
+
+  .box video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Responsive Breakpoints */
+
+  /* Mobile Devices */
+  @media (max-width: 768px) {
+    .container {
+      gap: 20px;
+    }
+
+    .box {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+  }
+  video.no-fullscreen::-webkit-media-controls-fullscreen-button {
+    display: none !important;
+  }
+  .video.no-fullscreen::-webkit-media-controls-fullscreen-button {
+  display: none !important;
+}
+
+.video.no-fullscreen::-moz-media-controls-fullscreen-button {
+  display: none !important;
+}
+
+
+.work_section>.work_container {
+    max-width: 707px;
+    width: 100%;
+    display: flex
+;
+  justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.work_section>.work_container>.block {
+  margin-bottom: 32px;
+  width: 100%;
+  display: flex;
+  /* justify-content: space-around; */
+  flex-direction: column;
+}
+.work_section>.work_container>.block>.info {
+  display: block;
+  /* flex-direction: unset;
+  justify-content: unset;
+  align-items: unset; */
+}
+
+.work_section>.work_container>.block>.box_{
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  width: 100%; /* Make the container full width */
+    max-width: 100%; /* Prevent overflow */
+    overflow: hidden; /
+}
+
+.video {
+    width: 100%; /* Make the video full width */
+    height: auto; /* Adjust the height according to the width to maintain aspect ratio */
+    display: block; /* Remove any extra whitespace below the video */
+    object-fit: cover; /* Ensure the video covers the container if aspect ratios differ */
+}
+
+@media screen and (max-width: 1440px) and (min-width: 940px) {
+    .box_ > video {
+        height: auto;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .box_ > video {
+      height: auto;
+      width: 100%;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .work_section>.work_container>.block>.info {
+        width: 100%;
+        /* height: 468.3px; */
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .work_section {
+        height: auto;
+       
+    }
+
+    .work_section>.work_container {
+        position: unset;
+    }
+
+    .work_section>.work_container>.block>.info {
+        width:100%;
+        height: auto;
+    }
+
+    /* .work_section>.work_container>.block {
+        margin-bottom: 0;
+    } */
+}
+.hero_section>.box {
+
+background: none;
+}
+
+@media screen and (min-width: 1440px) {
+    .hero_section>.box {
+
+        background: none;
+    }
+}
+.box {
+    
+      max-width: 100%;
+    }
+
+
+
+    @media screen and (max-width: 560px) {
+    .hero_section {
+        height: 100%;
+    }
+}
+
+
+@media screen and (max-width: 1060px) {
+    .box_ > video {
+        height: auto;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .work_section>h1, .work_section>.work_container {
+        transform: unset;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .work_section>.work_container>.block>.info>h1 {
+        margin-top: 60px;
+        
+    }
+}
+
+
+.plan_section>.prices>.card>a {
+ margin-top: auto;
+}
+
+@media screen and (max-width: 1060px) {
+  .plan_section>.prices>.card>a {
+    margin-top: auto;
+}
+}
+
+
+@media screen and (min-width: 1440px) {
+  .plan_section>.prices>.card>a {
+      margin-top: auto;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .plan_section>.prices>.card>a {
+    margin-top: auto;
+}
+}
+
+.plan_section>.prices>.card>h4 {
+  margin: 12px 0;
+  
+}
+
+@media screen and (min-width: 1440px) {
+  .plan_section>.prices>.card>h4 {
+      margin: 12px 0;
+      
+  }
+}
+
+@media screen and (max-width: 1060px) {
+  .plan_section>.prices>.card>h4 {
+    margin: 12px 0;
+    
+  }
+}
+.pricing-features-point {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 42px;
+}
+
+
+
+.tutorial-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: auto !important;
+  font-family: Plus Jakarta Sans, sans-serif;
+}
+
+
+/* Title Styling */
+.tutorial-title {
+  font-size: 36px;
+  /* Large title size */
+  font-weight: 700;
+  /* Bold weight */
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.title-bold {
+  color: #000000;
+  /* Black text */
+}
+
+.title-highlight {
+  color: #485aff;
+}
+
+/* Subtitle Styling */
+.tutorial-description {
+  font-size: 18px;
+  font-weight: 400;
+  color: #666666;
+  text-align: center;
+  max-width: 800px;
+  line-height: 135%;
+  margin-bottom: 48px;
+}
+
+
+
+/* Video Placeholder */
+.video-placeholder {
+  width: 894px;
+  height: auto;
+  /* background-color: #D3D3D3; */
+  /* Light gray for the placeholder */
+  border-radius: 8px;
+  /* Rounded corners */
+}
+
+@media screen and (max-width: 560px) {
+  .tutorial-title {
+    font-size: 24px;
+}
+
+.tutorial-description {
+    font-size: 16px;
+    max-width: 317px;
+    padding: 5px;
+}
+
+.video-placeholder {
+    width: 334px;
+    /* height: 390px; */
+    margin: 0 auto;
+}
+
+.tutorial-container {
+    height: auto;
+}
+
+.work_section>.work_container>.block {
+ 
+  /* justify-content: space-around; */
+  flex-direction: column-reverse;
+}
+}
+.work_section>.work_container {
+   max-width: 1061px;
+   
+}
+
+
+.hero_section{
+  gap: 10px;
+}
+
+.box-hero{
+  flex: 1 1 100%;
+}
+@media screen and (min-width: 1440px) {
+    .hero_section>.container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .hero_section {
+      gap: 0;
+    }
+}
+
+
+.works-txt {
+  margin-bottom: 30px;
+}
+    </style>
+  </head>
+
+  <body class="body-hidden">
+    <div class="root">
+      <header>
+        <a href="/">
+          <img class="logo" src="https://hooksmerger.s3.amazonaws.com/assets/logo.svg" alt="logo" />
+        </a>
+        <div>
+          <ul class="navigation">
+            <li>
+              <a href="#Home">Home</a>
+            </li>
+            <li>
+              <a href="#Portfolio">Portfolio</a>
+            </li>
+            <li>
+              <a href="#Pricing">Pricing</a>
+            </li>
+            <li>
+              <a href="#About">About</a>
+            </li>
+            <li>
+              <a href="#Contact">Contact</a>
+            </li>
+          </ul>
+
+          <div class="line"></div>
+          <div class="auth">
+            <a class='login links black' href="/login/">Login</a>
+            <a class='get_started links white' href="#Pricing">Get started</a>
+          </div>
+        </div>
+        <div class="menu">
+          <img src="https://hooksmerger.s3.amazonaws.com/assets/menu.svg" alt="menu" />
+        </div>
+      </header>
+      <div class="menu_wrapper">
+        <img class="close_menu"
+             src="https://hooksmerger.s3.amazonaws.com/assets/close.svg"
+             alt="close menu" />
+        <ul class="navigation">
+          <li>
+            <a href="#Home" class="menu-a">Home</a>
+          </li>
+          <li>
+            <a href="#Portfolio" class="menu-a">Portfolio</a>
+          </li>
+          <li>
+            <a href="#Pricing" class="menu-a">Pricing</a>
+          </li>
+          <li>
+            <a href="#About" class="menu-a">About</a>
+          </li>
+          <li>
+            <a href="#Contact" class="menu-a">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div class="hero_section" id="Home">
+        <div class="elips"></div>
+        <div class="container">
+          <h1>
+            Create <span>High-Converting</span> Video
+            Hooks Effortlessly
+          </h1>
+          <p class="hero_section_desktop_text">
+            Every Facebook advertiser knows the power of a great video hook.
+            
+            Now, with HooksMaster.io, you can
+            create winning hooks in minutes
+           
+            Without the hassle or expense of hiring video editors.
+          </p>
+          <p class="hero_section_mobile_text">
+            Every Facebook advertiser knows the power
+            <br />
+            of a great video hook. Now, with
+            <br />
+            HooksMaster.io, you can create winning
+            <br />
+            hooks in minutes Without the hassle or
+            <br />
+            expense of hiring video editors.
+          </p>
+          <a href="#Pricing">
+            Get Started Now
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/arrow_right_dark.svg" alt="arrow" />
+          </a>
+        </a>
+      </div>
+      
+        <div class="box box-hero" style="display: flex; justify-content: center;align-items: center;">
+          <!-- <img class="paint_a" src="https://hooksmerger.s3.amazonaws.com/assets/paint_a.svg" alt="paint_a" />
+          <img class="paint_b" src="https://hooksmerger.s3.amazonaws.com/assets/paint_b.svg" alt="paint_b" />
+          <img class="paint_c" src="https://hooksmerger.s3.amazonaws.com/assets/paint_c.svg" alt="paint_c" /> -->
+          <video loop class="video no-fullscreen" controls
+          poster="https://hooksmerger.s3.amazonaws.com/assets/video/home-intro/poster.png" 
+              >
+                <source src="https://hooksmerger.s3.amazonaws.com/assets/video/home-intro/intro.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+          </video>
+       
+      </div>
+     
+    </div>
+    <div class="work_section">
+      <h1>How does it work?</h1>
+      <p>
+        It's that simple. With HooksMaster.io, you
+        <br />
+        can test hooks rapidly, find winning ads
+        <br />
+        faster, and skyrocket your Facebook ad
+        <br />
+        ROI.
+      </p>
+      <div class="work_container">
+        <div class="mobile_block">
+          <div class="number">
+            <span>1</span>
+          </div>
+          <div class="info">
+            <h2>Prepare Your Hooks:</h2>
+            <p>
+              Type up your hooks in a CSV
+              
+              file.
+            </p>
+          </div>
+        </div>
+        <div class="mobile_block">
+          <div class="number">
+            <span>2</span>
+          </div>
+          <div class="info">
+            <h2>Select Video Clips:</h2>
+            <p>
+              Choose the video clips you
+             
+              want to include.
+            </p>
+          </div>
+        </div>
+        <div class="mobile_block">
+          <div class="number">
+            <span>3</span>
+          </div>
+          <div class="info">
+            <h2>Generate Hooks:</h2>
+            <p>
+              Click play and get brand
+            
+              new hooks instantly.
+            </p>
+          </div>
+        </div>
+        <div class="block">
+          <div class="info">
+            <h1>
+              <span>1.</span> Prepare Your Hooks
+            </h1>
+            <p class="works-txt">
+              Type your hooks into Google
+             
+              sheets then paste the link onto
+             
+              HooksMaster.io
+            </p>
+          </div>
+          <div class="box_">
+            <video autoplay muted loop class="video no-fullscreen" controls
+            poster="https://hooksmerger.s3.amazonaws.com/assets/how_it_works/1.png"
+            >
+              <source src="https://hooksmerger.s3.amazonaws.com/assets/video/how_it_works/1.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <div style="border-bottom: 1px solid #ccc;width: 100%;margin: 0 auto;margin-top: 40px;"></div>
+        <div class="block">
+          <div class="info">
+            <h1>
+              <span>2.</span> Select your Content
+            </h1>
+            <p class="works-txt">
+              Choose what clip you want to
+              
+              display on the video for the hook.
+            </p>
+          </div>
+          <div class="box_">
+            <video autoplay muted loop class="video no-fullscreen" height="468px" width="470px" controls
+            poster="https://hooksmerger.s3.amazonaws.com/assets/how_it_works/2.png"
+            >
+              <source src="https://hooksmerger.s3.amazonaws.com/assets/video/how_it_works/2.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <div style="border-bottom: 1px solid #ccc; width: 100%;margin: 0 auto;margin-top: 40px;"></div>
+        <div class="block">
+          <div class="info">
+            <h1>
+              <span>3.</span> Select AI Voiceover
+            </h1>
+            <p class="works-txt">
+              From eleven labs paste your API key
+             
+              in and select which voice ID you
+            
+              want to use
+            </p>
+          </div>
+          <div class="box_">
+            <video autoplay muted loop class="video no-fullscreen" height="468px" width="470px" controls
+            poster="https://hooksmerger.s3.amazonaws.com/assets/how_it_works/3.png"
+            >
+              <source src="https://hooksmerger.s3.amazonaws.com/assets/video/how_it_works/3.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <div style="border-bottom: 1px solid #ccc;width: 100%;margin: 0 auto;margin-top: 40px;"></div>
+        <div class="block">
+          <div class="info">
+            <h1>
+              <span>4.</span> Customise The Hooks
+            </h1>
+            <p class="works-txt">
+              Choose what Color you want the
+             
+              hooks box and font to be
+            </p>
+          </div>
+          <div class="box_">
+            <video autoplay muted loop class="video no-fullscreen" height="468px" width="470px" controls
+            poster="https://hooksmerger.s3.amazonaws.com/assets/how_it_works/4.png" 
+            >
+              <source src="https://hooksmerger.s3.amazonaws.com/assets/video/how_it_works/4.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <div style="border-bottom: 1px solid #ccc;width: 100%;margin: 0 auto;margin-top: 40px;"></div>
+        <div class="block">
+          <div class="info">
+            <h1>
+              <span>5.</span> Generate Your Hooks
+            </h1>
+            <p class="works-txt">
+              Click “create” to create your
+            
+              hooks and then download them
+            </p>
+          </div>
+          <div class="box_">
+            <video autoplay muted loop class="video no-fullscreen" height="468px" width="470px" controls
+            poster="https://hooksmerger.s3.amazonaws.com/assets/how_it_works/5.png"
+            >
+              <source src="https://hooksmerger.s3.amazonaws.com/assets/video/how_it_works/5.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <div style="border-bottom: 1px solid #ccc;width: 100%;margin: 0 auto;margin-top: 40px;"></div>
+        <div class="block">
+          <div class="info">
+            <h1>
+              <span>6.</span> Merge Into Creatives
+            </h1>
+            <p class="works-txt">
+              Use our merging tool so you can
+            
+              Marge your hooks onto your
+             
+              existing creatives
+            </p>
+          </div>
+          <div class="box_">
+            <video autoplay muted loop  height="469px" width="470px" controls class="video no-fullscreen"
+            poster="https://hooksmerger.s3.amazonaws.com/assets/how_it_works/6.png"
+            >
+              <source src="https://hooksmerger.s3.amazonaws.com/assets/video/how_it_works/6.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why_us_section">
+      <h1>Why HooksMaster.io?</h1>
+      <div class="container">
+        <div class="box">
+          <img src="https://hooksmerger.s3.amazonaws.com/assets/clock.svg" alt="clock" />
+          <p>
+            Save time and money compared to
+            <br />
+            hiring video editors
+          </p>
+        </div>
+        <div class="box">
+          <img src="https://hooksmerger.s3.amazonaws.com/assets/happy.svg" alt="happy" />
+          <p>
+            Test hooks quickly to find winning
+            <br />
+            ads faster
+          </p>
+        </div>
+        <div class="box">
+          <img src="https://hooksmerger.s3.amazonaws.com/assets/technical_skills.svg"
+               alt="technical skills" />
+          <p>
+            Intuitive interface - no technical skills
+            <br />
+            required
+          </p>
+        </div>
+        <div class="box">
+          <img src="https://hooksmerger.s3.amazonaws.com/assets/cards.svg" alt="cards" />
+          <p>
+            Hooks For Less Than You Pay Your
+            <br />
+            Video Editors
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hooks_section" id="Portfolio" >
+      <div class="title" style="display: flex; flex-direction: column;justify-content: centera;align-items: center;">
+        <h1>Hooks Portfolio</h1>
+        <h4>
+          Explore our gallery of successful hooks created by businesses just like yours.
+        </h4>
+      </div>
+    
+      <!-- Facebook/Instagram Hook Examples -->
+      <section class="portfolio-category">
+        <h2 class="portfolio-heading">Facebook/Instagram Hook Examples</h2>
+        <div class="container facebook-ig-examples">
+          <div class="box">
+            <video poster="https://hooksmerger.s3.amazonaws.com/assets/video/tiktok_examples/0.png"  controls>
+              <source src="https://hooksmerger.s3.amazonaws.com/assets/video/facebook_ig_examples/0.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+    
+          <div class="box">
+            <video poster="https://hooksmerger.s3.amazonaws.com/assets/video/tiktok_examples/1.png" controls>
+              <source  src="https://hooksmerger.s3.amazonaws.com/assets/video/facebook_ig_examples/1.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+    
+          <div class="box">
+            <video poster="https://hooksmerger.s3.amazonaws.com/assets/video/tiktok_examples/2.png"  controls>
+              <source  src="https://hooksmerger.s3.amazonaws.com/assets/video/facebook_ig_examples/2.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </section>
+    
+      <!-- TikTok Hook Examples -->
+      <section class="portfolio-category">
+        <h2 class="portfolio-heading">TikTok Hook Examples</h2>
+        <div class="container tiktok-examples">
+          <div class="box">
+            <video poster="https://hooksmerger.s3.amazonaws.com/assets/video/tiktok_examples/tk-0.png" controls>
+              <source   src="https://hooksmerger.s3.amazonaws.com/assets/video/tiktok_examples/0.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+    
+          <div class="box">
+            <video poster="https://hooksmerger.s3.amazonaws.com/assets/video/tiktok_examples/tk-1.png" controls>
+              <source  src="https://hooksmerger.s3.amazonaws.com/assets/video/tiktok_examples/1.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+    
+          <div class="box">
+            <video poster="https://hooksmerger.s3.amazonaws.com/assets/video/tiktok_examples/tk-2.png"  controls>
+              <source src="https://hooksmerger.s3.amazonaws.com/assets/video/tiktok_examples/2.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </section>
+    
+      <!-- YouTube Hook Examples -->
+      <section class="portfolio-category">
+        <h2 class="portfolio-heading">YouTube Hook Examples</h2>
+        <div class="container youtube-examples">
+          <div class="box">
+            <video  poster="https://hooksmerger.s3.amazonaws.com/assets/video/youtube_examples/l1.png" controls>
+              <source src="https://hooksmerger.s3.amazonaws.com/assets/video/youtube_examples/0.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+    
+          <div class="box">
+            <video poster="https://hooksmerger.s3.amazonaws.com/assets/video/youtube_examples/l2.png" controls>
+              <source   src="https://hooksmerger.s3.amazonaws.com/assets/video/youtube_examples/1.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+    
+          <div class="box">
+            <video poster="https://hooksmerger.s3.amazonaws.com/assets/video/youtube_examples/l3.png" controls>
+              <source   src="https://hooksmerger.s3.amazonaws.com/assets/video/youtube_examples/2.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <div style="border-bottom: 1px solid #0000005c;"></div>
+      </section>
+    </div>
+
+    <div class="tutorial-container" style="height: auto;">
+      <h1 class="tutorial-title">
+        <span class="title-bold">HooksMaster</span>
+        <span class="title-highlight">Tutorial</span>
+      </h1>
+      <p class="tutorial-description">
+        In This Tutorial, We'll Walk You Through How To Use HookMaster.Io To Create
+        High-Converting Video Sales Letters With Ease.
+      </p>
+      <div class="video-placeholder">
+        <div class="box_">
+          <video muted loop  height="469px" width="470px" controls class="video no-fullscreen"
+          poster="https://hooksmerger.s3.amazonaws.com/video/tutorial_poster.png"
+          >
+            <source src="https://hooksmerger.s3.amazonaws.com/video/hook_tu.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      
+    </div>
+    <div style="border-bottom: 1px solid #0000005c;max-width: 1200px;margin: 0 auto; margin-top: 70px;"></div>
+    <div class="plan_section" id="Pricing">
+      <div class="title">
+        <h1 style="display: flex; justify-content: center; width: 100%;">Choose a plan that suits for your business</h1>
+      </div>
+      <div class="prices">
+        <div class="card">
+          <h5>Free Trial</h5>
+          <h1>
+            Free <span>&nbsp;</span>
+          </h1>
+          <h6 style="margin-bottom: 10px;">Learn How HooksMaster.io Works</h6>
+          <h4 class="pricing-features-point">
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/blue_check_mark.svg" alt="check mark" />
+            3 Hooks
+          </h4>
+          <a href="/register/">
+            Get Started
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/arrow_right_dark.svg" alt="arrow right" />
+          </a>
+        </div>
+        <div class="card">
+          <img src="https://hooksmerger.s3.amazonaws.com/assets/most_populat.png" alt="Most Popular!" class="boosted_most_popularr">
+          <h5 style="text-transform: capitalize;">Pro</h5>
+          <h1>
+            $297 <span>/month</span>
+          </h1>
+          <h6 style="margin-bottom: 10px;">$2.97 /hook</h6>
+          <h4 class="pricing-features-point">
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/white_check_mark.svg" alt="check mark" />
+            100 Hooks Per Month
+          </h4>
+          <h4 class="pricing-features-point">
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/white_check_mark.svg" alt="check mark" />
+            100  Merger Credits Monthly
+          </h4>
+          <h4 class="pricing-features-point">
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/white_check_mark.svg" alt="check mark" />
+            Free Access to Video Merger
+          </h4>
+          <a style="margin-top: 10px;" href="/subscribe/price_1QnqbfBslQSg03TDgvwekJUw?success_path=/register/&cancel_path=/" >
+            Get Started
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/arrow_right_dark.svg" alt="arrow right" />
+          </a>
+        </div>
+        <div class="card">
+          <h5 style="text-transform: capitalize;">Premium</h5>
+          <h1>
+            $497 <span>/month</span>
+          </h1>
+          <h6 style="margin-bottom: 10px;" >$1.42/hook</h6>
+          <h4 class="pricing-features-point">
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/blue_check_mark.svg" alt="check mark" />
+            350 Hooks per month
+          </h4>
+          <h4 class="pricing-features-point">
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/blue_check_mark.svg" alt="check mark" />
+            350  Merger Credits Monthly
+          </h4>
+          <h4 class="pricing-features-point">
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/blue_check_mark.svg" alt="check mark" />
+            Free Access to Video Merger
+          </h4>
+          <a style="margin-top: 10px;" href="/subscribe/price_1QnqcGBslQSg03TD82SECZUY?success_path=/register/&cancel_path=/">
+            Get Started
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/arrow_right_dark.svg" alt="arrow right" />
+          </a>
+        </div>
+      </div>
+      <div class="info" style="margin-bottom: 1rem !important;">
+        <h4>All Plans Include</h4>
+        <ul>
+          <li>
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/blue_check_mark.svg" alt="check mark" />
+            Free Access To Our Video Merger So You Can Merge The Hooks To Your Creatives
+          </li>
+          <li>
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/blue_check_mark.svg" alt="check mark" />
+            Generates Hooks In Minutes
+          </li>
+          <li>
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/blue_check_mark.svg" alt="check mark" />
+            Cheaper Than Hiring Video Editors
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="about_section" id="About">
+      <div class="who_we">
+        <h2>Who we are</h2>
+        <p class="indented-paragraph">
+          At HooksMaster.io, we're passionate about helping businesses succeed with
+          <br />
+          Facebook advertising. Our
+          team
+          of experienced marketers and software
+          <br />
+          developers came together to create a tool that simplifies the
+          process of creating
+          <br />
+          high-converting video hooks. We understand the challenges advertisers face
+          <br />
+          and are
+          committed to providing a solution that saves time, money, and effort
+          <br />
+          while delivering outstanding
+          results.
+        </p>
+      </div>
+      <div class="our_mission" >
+        <h2>Our mission</h2>
+        <p class="indented-paragraph">
+          Our mission is to empower advertisers of all sizes with the tools they need to
+          <br />
+          create compelling
+          video
+          ads that drive engagement, conversions, and revenue.
+          <br />
+          With HooksMaster.io, we're making it easier
+          than
+          ever to optimize your Facebook
+          <br />
+          ad performance and achieve your marketing goals.
+        </p>
+      </div>
+    </div>
+
+    <div id="earning" class="earning_section">
+      <h2 class="earning-title">
+        Become a HooksMaster.io Affiliate And
+        <br />
+        Earn 30% Recurring Commissions!
+      </h2>
+      <p class="earning-paragraph">
+        Refer customers to HooksMaster.io and earn 30% recurring commissions
+        on every payment they make. Build a stream of passive income for as
+        long as your referrals continue using the service!
+      </p>
+      <div class="cards-container">
+        <div class="earning-card">
+          <span class="number">1</span>
+          <p class="title">Sign Up</p>
+          <p class="text">It's fast, easy, and free to become an affiliate.</p>
+        </div>
+        <div class="earning-card">
+          <span class="number">2</span>
+          <p class="title">Share Your Unique Link</p>
+          <p class="text">
+            Promote HooksMaster.io to your audience via your blog, website, or
+            social media.
+          </p>
+        </div>
+        <div class="earning-card">
+          <span class="number">3</span>
+          <p class="title">Earn Commissions</p>
+          <p class="text">
+            Get 30% of every customer’s monthly payments, for as long as they
+            remain active users.
+          </p>
+        </div>
+      </div>
+      <button>
+        Sign Up Now
+        <img src="https://hooksmerger.s3.amazonaws.com/assets/small-right.svg" alt="arrow right" />
+      </button>
+    </div>
+
+    <div class="contact_section" id="Contact">
+      
+
+      <div class="info_block">
+        <h1>Let’s get in touch</h1>
+        <p class="info_block_desktop_p">
+          We're here to help! If you have any questions, concerns, or
+          <br />
+          feedback about HooksMaster.io, please don't hesitate to
+          <br />
+          reach out to our friendly support team.
+        </p>
+        <p class="info_block_mobile_p">
+          We're here to help! If you have any
+          <br />
+          questions, concerns, or
+          feedback about HooksMaster.io, please don't hesitate to
+          <br />
+          reach out to our friendly support team.
+        </p>
+        <h5>Email</h5>
+        <h6>support@hooksmaster.io</h6>
+        <p class="info_block_desktop_p">
+          We strive to respond to all inquiries within 24 hours during
+          <br />
+          business days. For technical support, please provide as
+          <br />
+          much detail as possible about the issue you're experiencing,
+          <br />
+          and our team will work diligently to resolve it.
+        </p>
+        <p class="info_block_mobile_p">
+          We strive to respond to all inquiries within
+          <br />
+          24 hours during business days. For
+          <br />
+          technical support, please provide as much
+          <br />
+          detail as possible about the issue you're
+          <br />
+          experiencing, and our team will work
+          <br />
+          diligently to resolve it.
+        </p>
+      </div>
+      <form method="post">
+        <div class="input_block">
+          <input type="hidden" name="csrfmiddlewaretoken" value="kFrtA7Bx8yMjWWkuL2u9A3rqqdDr2lkO33cnZV4IvsiyNJQ6VzPR96uSgQR56kzd">
+          <div class="wrapper">
+            <label for="full_name">Full Name</label>
+            <input type="text" name="full_name" id="full_name" placeholder="Enter Your Full Name" maxlength="100" required>
+            <!-- <input id="full_name" type="text" placeholder="Enter Your Full Name" /> -->
+          </div>
+          <div class="wrapper">
+            <label for="email">Email address</label>
+            <input type="email" name="email" id="email" placeholder="Enter your Email address" maxlength="320" required>
+            <!-- <input id="email" type="email" placeholder="Enter your Email address" /> -->
+          </div>
+          <div class="wrapper">
+            <label for="message">Write your message</label>
+            <textarea name="message" cols="40" rows="10" id="message" placeholder="Write Us Your Question Here..." required>
+</textarea>
+            <!-- <textarea id="message" placeholder="Write Us Your Question Here..."></textarea> -->
+          </div>
+          <button type="submit">
+            Send Message
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/arrow_right_dark.svg" alt="arrow" />
+          </button>
+        </div>
+      </form>
+    </div>
+    <footer style="flex-wrap: nowrap;">
+      <div class="information">
+        <img src="https://hooksmerger.s3.amazonaws.com/assets/white_logo.svg" alt="logo" />
+        <p class="desktop_p" style="text-align: start;">
+          Every Facebook advertiser knows the power of a great
+          <br />
+          video hook. Now, with HooksMaster.io, you can create
+          <br />
+          winning hooks in minutes, without the hassle or
+          <br />
+          expense of hiring video editors.
+        </p>
+        <p class="mobile_p">
+          Every Facebook advertiser knows the power of a
+          <br />
+          great video hook. Now, with HooksMaster.io, you
+          <br />
+          can create winning hooks in minutes, without the
+          <br />
+          hassle or expense of hiring video editors.
+        </p>
+        <ul class="socials">
+          <li>
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/facebook.svg" alt="facebook" />
+          </li>
+          <li>
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/twitter.svg" alt="twitter" />
+          </li>
+          <li>
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/linkedin.svg" alt="linkedin" />
+          </li>
+        </ul>
+      </div>
+      <div class="navigation_bar">
+        <div class="box" style="background: #191919;">
+          <h5>Company</h5>
+          <ul>
+            <li>
+              <a href="#Home">Home</a>
+            </li>
+            <li>
+              <a href="#Portfolio">Portfolio</a>
+            </li>
+            <li>
+              <a href="#Pricing">Pricing</a>
+            </li>
+            <li>
+              <a href="#About">About</a>
+            </li>
+          </ul>
+        </div>
+        <div class="box" style="background: #191919;">
+          <h5>Help</h5>
+          <ul>
+            <li>
+              <a href="#Contact">Contact us</a>
+            </li>
+            <li>
+              <a href="./terms/terms-and-conditions.html">Terms & Conditions</a>
+            </li>
+            <li>
+              <a href="./terms/privacy-policy.html">Privacy policy</a>
+            </li>
+            <li>
+              <a href="./terms/refund-policy.html">Refund Policy</a>
+            </li>
+            <li>
+              <a href="./terms/affiliate-program.html">Affiliate Program Policy</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="https://hooksmerger.s3.amazonaws.com/main.js"></script>
 </body>
+
 </html>

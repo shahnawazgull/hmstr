@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "/assets/styles/header.css";
+/* @import "/assets/styles/hero.css"; */
+/* @import "/assets/styles/work.css";
+@import "/assets/styles/whyUs.css";
+@import "/assets/styles/hooks.css"; */
+@import "/assets/styles/menu.css";
+/* @import "/assets/styles/about.css";
+@import "/assets/styles/plan.css";
+@import "/assets/styles/contact.css"; */
+@import "/assets/styles/footer.css";
+/* @import "/assets/styles/haveDone.css"; */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.root{
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+input {
+    outline: none;
+}
+
+.body-hidden {
+    visibility: hidden;
+}
+
+@media screen and (max-width: 391px) {
+    body {
+        zoom: 95%;
+    }
+}
+@media screen and (max-width: 371px) {
+    body {
+        zoom: 90%;
+    }
+}
+@media screen and (max-width: 351px) {
+    body {
+        zoom: 85%;
+    }
+}
+@media screen and (max-width: 332px) {
+    body {
+        zoom: 81.8%;
+    }
+}
+
+.links {
+    text-decoration: none;
+}
+
+.white {
+    color: white;
+}
+.black {
+    color: black;
+}

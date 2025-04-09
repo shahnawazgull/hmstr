@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "/assets/styles/header.css";
+@import "/assets/styles/hero.css";
+@import "/assets/styles/work.css";
+@import "/assets/styles/whyUs.css";
+@import "/assets/styles/hooks.css";
+@import "/assets/styles/menu.css";
+@import "/assets/styles/about.css";
+@import "/assets/styles/plan.css";
+@import "/assets/styles/contact.css";
+@import "/assets/styles/earning.css";
+@import "/assets/styles/footer.css";
+.layout-wrapper {
+    font-size: 20px;
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 600;
+    line-height: 145%;
+    /* identical to box height, or 29px */
+    letter-spacing: 0.02em;
+    /* black/black */
+    color: #000000;
+}
+.txt{
+    /* Single Video */
+
+margin: 0 auto;
+width: 109px;
+height: 22px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 22px;
+/* identical to box height */
+text-align: center;
+letter-spacing: -0.03em;
+text-transform: capitalize;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+}
+.layout-box {
+    /* Frame 119 */
+
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 8px;
+    gap: 10px;
+
+    width: 266.67px;
+    height: 259px;
+
+    background: #FFFFFF;
+    /* blue */
+    border: 2px solid #485AFF;
+    border-radius: 8px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+
+}
+.small-box{
+    /* Component 1 */
+
+width: 25px;
+height: 25px;
+
+background-color: rebeccapurple;
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+}
