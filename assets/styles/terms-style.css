@@ -9,6 +9,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+.footer-anchor{
+    margin-bottom: 22px;
+}
 
 .root{
     width: 100%;
