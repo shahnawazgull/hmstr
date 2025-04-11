@@ -1,0 +1,448 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+     <link rel="stylesheet" href="/assets/styles/video-merger.css">
+
+    <link rel="icon"
+          type="image/svg+xml"
+          href="https://hooksmerger.s3.amazonaws.com/assets/favicon.svg" />
+    <title>Video Merger</title>
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/67be2f5a29b02f190e366dc8/1ikvehuql';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+  </head>
+  <body>
+    <div class="root">
+      <header>
+        <img src="https://hooksmerger.s3.amazonaws.com/assets/white_logo.svg"
+             alt="logo"
+             onclick="window.location.href='/hooks/upload.html'"
+             style="cursor: pointer" />
+
+        <div class="account">
+          <h5>
+            Merger Credits Remaining: 50
+          </h5>
+          <div class="user">
+            <img src="https://hooksmerger.s3.amazonaws.com/assets/user.svg" alt="user" />
+          </div>
+        </div>
+      </header>
+      <div class="menu">
+        <ul>
+          <li onclick="window.location.href='/manage/subscription.html'">
+            Manage Subscription
+          </li>
+          <li onclick="window.location.href='/hooks/upload.html'">Create Hooks</li>
+          <li>
+            Credit Left <span>50</span>
+          </li>
+          <li onclick="window.location.href='/logout/'">Logout</li>
+        </ul>
+      </div>
+      <div class="content">
+        <div class="video_manager">
+          <h1>Video Merger</h1>
+          <form id="uploadForm"
+                class="upload_files"
+                action="/merge/upload/"
+                method="post"
+                enctype="multipart/form-data">
+            <input type="hidden" name="csrfmiddlewaretoken" value="1o84HOrjUEC1F9Vo9bsmGpYLrRi80TAuakIgopzZG1IIn86ivLK2Ynm5nTxSsYwR">
+            <div class="input_block">
+              <div class="upload_file_wrapper">
+                <h4>
+                  Upload Your Hooks: <span>(Maximum 10)</span>
+                </h4>
+                <label id="shortVideoLabel" for="short_videos">
+                  <span class="button">
+                    <img src="https://hooksmerger.s3.amazonaws.com/assets/upload_gray.svg" alt="upload" />
+                    Choose file
+                  </span>
+                </label>
+                <input id="short_videos"
+                       name="short_videos"
+                       type="file"
+                       accept="video/mp4,video/x-m4v,video/*"
+                       multiple
+                       required />
+                <p class="short-vid-info"
+                   style="font-family: 'Plus Jakarta Sans', sans-serif">
+                  <span id="uploadedCount">Uploaded: 0</span>
+                  <span id="remainingCount">Remaining: 10</span>
+                </p>
+                <p id="error-message">
+                  You can only upload a maximum of 10 Hooks. refresh and try again.
+                </p>
+                <p id="shortVideoSizeError"
+                   style="font-family: 'Plus Jakarta Sans', sans-serif;
+                          margin-bottom: 10px;
+                          color: #ee6e68;
+                          font-size: small;
+                          display: none">
+                  Max File Size For Short Videos Is 1 GB
+                </p>
+              </div>
+
+              <div class="upload_file_wrapper">
+                <h4>
+                  Upload Your Large Video: <span>(Maximum 1)</span>
+                </h4>
+                <label id="largeVideoLabel" for="large_videos">
+                  <span class="button">
+                    <img src="https://hooksmerger.s3.amazonaws.com/assets/upload_gray.svg" alt="upload" />
+                    Choose file
+                  </span>
+                </label>
+                <input id="large_videos"
+                       name="large_videos"
+                       type="file"
+                       accept="video/mp4,video/x-m4v,video/*"
+                       required />
+                <p id="largeVideoName"
+                   style="font-family: 'Plus Jakarta Sans', sans-serif">
+                  No large video uploaded
+                </p>
+                <p id="largeVideoSizeError"
+                   style="font-family: 'Plus Jakarta Sans', sans-serif;
+                          margin-bottom: 10px;
+                          color: #ee6e68;
+                          font-size: small;
+                          display: none">
+                  Max File Size For Large Video Is 1 GB
+                </p>
+              </div>
+            </div>
+
+            <!-- Progress bar -->
+            <div id="progress-container" style="display: none;">
+              <div class="progress-bar-text">
+                <span class="uploading-text">Uploading</span>
+                <span id="progress-percentage" class="percentage-text">0%</span>
+              </div>
+              <div id="progress-bar">
+                <div id="progress"></div>
+              </div>
+            </div>
+
+            <button id="submit" type="submit">Upload and Process</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      const user = document.querySelector(".user");
+      const menu = document.querySelector(".menu");
+      user.addEventListener("click", function() {
+        if (menu.style.display === "block") {
+          menu.style.display = "none"
+        } else {
+          menu.style.display = "block"
+        }
+      });
+    </script>
+    <script>
+
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const shortVideosInput = document.getElementById("short_videos");
+//     const selectedFiles = [];
+
+//     shortVideosInput.addEventListener('change', function(event) {
+//         // Clear the selectedFiles array on each change
+//         selectedFiles.length = 0;
+
+//         // Add new files to the selectedFiles array
+//         for (const file of event.target.files) {
+//             selectedFiles.push(file);
+//         }
+
+//         // Calculate the total size of the selected files
+//         let totalSize = 0;
+//         for (const file of selectedFiles) {
+//             totalSize += file.size;
+//         }
+
+//         // Check if the total size exceeds 1 GB
+//         if (totalSize > 1 * 1024 * 1024 * 1024) {
+//             // Clear the input field
+//             shortVideosInput.value = '';
+
+//             // Clear the selectedFiles array
+//             selectedFiles.length = 0;
+
+//             // Optionally, display an error message
+//             // alert('Total size of short videos must not exceed 1 GB');
+//         } else {
+//             // If the total size is valid, update the input files
+//             const dataTransfer = new DataTransfer();
+//             for (const file of selectedFiles) {
+//                 dataTransfer.items.add(file);
+//             }
+//             shortVideosInput.files = dataTransfer.files;
+//         }
+//     });
+// });
+
+
+
+      // document.addEventListener('DOMContentLoaded', function() {
+      //   const shortVideosInput = document.getElementById("short_videos");
+      //   const selectedFiles = [];
+
+      //   shortVideosInput.addEventListener('change', function(event) {
+      //     for (const file of event.target.files) {
+      //       selectedFiles.push(file);
+      //     }
+
+      //     const dataTransfer = new DataTransfer();
+      //     for (const file of selectedFiles) {
+      //       dataTransfer.items.add(file);
+      //     }
+
+      //     shortVideosInput.files = dataTransfer.files;
+      //   });
+      // });
+    </script>
+
+   
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+    const submitButton = document.getElementById("submit");
+    const shortVideosInput = document.getElementById("short_videos");
+    const largeVideoInput = document.getElementById("large_video");
+    const errorMessage = document.getElementById('error-message');
+    const uploadedCountDisplay = document.getElementById('uploadedCount');
+    const remainingCountDisplay = document.getElementById('remainingCount');
+
+    let selectedShortVideos = [];
+
+    shortVideosInput.addEventListener('change', function(event) {
+
+        selectedShortVideos = Array.from(event.target.files);
+
+        if (selectedShortVideos.length > 10) {
+            shortVideosInput.disabled = true;
+            submitButton.disabled = true;
+            errorMessage.style.display = 'block';
+        } else {
+            shortVideosInput.disabled = false;
+            submitButton.disabled = false;
+            errorMessage.style.display = 'none';
+        }
+
+        updateCountDisplay();
+    });
+
+    function updateCountDisplay() {
+        const uploaded = selectedShortVideos.length;
+        const remaining = 10 - uploaded;
+
+        uploadedCountDisplay.textContent = `Uploaded: ${uploaded}`;
+        remainingCountDisplay.textContent = `Remaining: ${remaining}`;
+    }
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const largeVideoInput = document.getElementById("large_videos");
+    const largeVideoNameDisplay = document.getElementById('largeVideoName');
+    const shortVideosInput = document.getElementById("short_videos");
+    const shortVideoSizeError = document.querySelector('#shortVideoSizeError');
+    const shortVideoLabel = document.querySelector('#shortVideoLabel');
+
+    // Large video validation
+    largeVideoInput.addEventListener('change', function(event) {
+        const largeVideoFile = event.target.files[0];
+
+
+          if (largeVideoFile) {
+            // Check if file size exceeds 1 GB
+              if (largeVideoFile.size > 1 * 1024 * 1024 * 1024) {
+                  // Display error message and style
+                  document.querySelector('#largeVideoSizeError').style.display = 'block';
+                  document.querySelector('#largeVideoLabel').style.border = '1px dashed #ee6e68';
+                  largeVideoNameDisplay.textContent = "No large video uploaded";
+              } else {
+                  // File size is valid
+                  document.querySelector('#largeVideoSizeError').style.display = 'none';
+                  document.querySelector('#largeVideoLabel').style.border = '1px dashed #19191980';
+
+                  // Set the file name
+                  largeVideoNameDisplay.textContent = `Selected: ${largeVideoFile.name}`;
+              }
+          } else {
+              // No file selected
+              largeVideoNameDisplay.textContent = "No large video uploaded";
+          }
+        
+
+    });
+
+
+
+    // Short videos validation
+shortVideosInput.addEventListener('change', function(event) {
+    const shortVideoFiles = Array.from(event.target.files);
+    let totalSize = 0;
+    const uploadedCountDisplay = document.getElementById('uploadedCount');
+        const remainingCountDisplay = document.getElementById('remainingCount');
+
+    // Calculate total size of short videos
+    shortVideoFiles.forEach(file => {
+        totalSize += file.size;
+        console.log(totalSize)
+    });
+
+    // Check if total size exceeds 1 GB
+    if (totalSize > 1 * 1024 * 1024 * 1024) {
+        // Display error message and style
+        shortVideoSizeError.style.display = 'block';
+        shortVideoSizeError.textContent = 'Total size of short videos must not exceed 1 GB';
+        shortVideoLabel.style.border = '1px dashed #ee6e68';
+
+        // Clear the input field
+        event.target.value = ''; // This empties the input field
+
+        // Reset count displays
+
+        uploadedCountDisplay.textContent = `Uploaded: 0`;
+        remainingCountDisplay.textContent = `Remaining: 10`;
+        selectedShortVideos = [];
+    }else if ('50'<shortVideoFiles.length){
+      event.target.value = ''
+      
+      uploadedCountDisplay.textContent = `Uploaded: 0`;
+        remainingCountDisplay.textContent = `Remaining: 10`;
+              alert(`Your Credit Is Not Enough To Process ${shortVideoFiles.length} Short Videos. You Have Just  50 Credits Left`)
+              
+    }
+     else {
+        // Hide error message and reset style
+        shortVideoSizeError.style.display = 'none';
+        shortVideoLabel.style.border = '1px dashed #19191980';
+    }
+});
+
+
+
+});
+
+function resetErrorMessage(){
+  document.querySelector('#largeVideoSizeError').style.display = 'none';
+    document.querySelector('#largeVideoLabel').style.border = '1px dashed #19191980';
+    document.querySelector('#shortVideoSizeError').style.display = 'none';
+    document.querySelector('#shortVideoLabel').style.border = '1px dashed #19191980';
+}
+
+
+let interval;
+
+function startAnimation() {
+    let button = document.getElementById("submit");
+    let dots = "";
+    let count = 0;
+    button.textContent = "Processing";
+    
+    interval = setInterval(() => {
+        count = (count + 1) % 4;
+        dots = ".".repeat(count);
+        button.textContent = `Processing${dots}`;
+    }, 500);
+}
+
+function stopAnimation() {
+    clearInterval(interval);
+    let button = document.getElementById("submit");
+    button.textContent = "Upload and Process";
+}
+
+
+
+document.getElementById('uploadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+   
+    startAnimation()
+
+
+    // resetErrorMessage()
+
+    const largeVideoFile = document.getElementById("large_videos").files[0];
+    const shortVideos = Array.from(document.getElementById("short_videos").files);
+
+    let totalSize = 0;
+
+    // Calculate total size of short videos
+    shortVideos.forEach(file => {
+        totalSize += file.size;
+    });
+
+    // Check if large video is present and within size limit
+    if (!largeVideoFile || largeVideoFile.size > 1 * 1024 * 1024 * 1024) {
+        document.querySelector('#largeVideoSizeError').style.display = 'block';
+        document.querySelector('#largeVideoLabel').style.border = '1px dashed #ee6e68';
+        stopAnimation()
+        return false;
+    }
+
+    // Check if total size of short videos exceeds 1 GB
+    if (totalSize > 1 * 1024 * 1024 * 1024) {
+        // alert('Total size of short videos exceeds 1 GB.');
+
+        document.querySelector('#shortVideoSizeError').style.display = 'block';
+        document.querySelector('#shortVideoLabel').style.border = '1px dashed #ee6e68';
+        stopAnimation()
+        
+        return false;
+    }
+
+    const formData = new FormData(this);
+
+    const xhr = new XMLHttpRequest();
+    xhr.responseType = 'json';
+    xhr.open('POST', this.action, true);
+
+    document.getElementById('progress-container').style.display = 'block';
+
+    xhr.upload.onprogress = function(event) {
+        if (event.lengthComputable) {
+            const percentComplete = Math.round((event.loaded / event.total) * 100);
+            document.getElementById('progress').style.width = percentComplete + '%';
+            document.getElementById('progress-percentage').innerText = percentComplete + '%';
+        }
+    };
+
+    xhr.onload = function() {
+      stopAnimation()
+        if (xhr.status === 200) {
+            window.location.href = "/merge/processing/0/".replace('0', xhr.response.taskId);
+        } else {
+            alert('An error occurred while uploading the file.');
+        }
+    };
+
+    xhr.send(formData);
+});
+    </script>
+  </body>
+</html>
