@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Assuming CSS file is in the same directory; update path if needed -->
+    <link rel="stylesheet" href="/assets/styles/processing.css" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <title>Hooks Generation</title>
+    <style>
+        #progress{
+          display: inline;
+        }
+        .admin-header {
+          font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+  
+        @media (max-width:650px) {
+          .header-profile {
+            margin-right: -1rem;
+          }
+        }
+  
+        @media (max-width:420px) {
+          .header-profile {
+            margin-right: -2rem;
+          }
+        }
+  
+        @media screen and (min-width: 1440px) {
+          .root>header {
+            height: 72px;
+            padding: 34px 108px;
+          }
+  
+          .root>header>img {
+            width: 243.16px;
+            height: 35px;
+          }
+  
+          .root>header>.account>h5 {
+            font-size: 14px;
+            line-height: 17.07px;
+            padding-right: 16px;
+            margin-right: 16px;
+          }
+  
+          .root>header>.account>.user {
+            width: 50px;
+            height: 50px;
+          }
+  
+          .root>header>img,
+          .root>header>.account {
+            transform: scale(0.9);
+          }
+        }
+  
+        .admin-header {
+          background: #191919;
+          padding: 14px 44px;
+          border-bottom: 1px solid #000;
+          text-align: center;
+          height: 80px;
+          width: 100vw;
+          display: flex;
+          align-items: center;
+        }
+  
+        .container {
+          width: 100%;
+          padding-right: var(--bs-gutter-x, 0.75rem);
+          padding-left: var(--bs-gutter-x, 0.75rem);
+          margin-right: auto;
+          margin-left: auto;
+          position: relative;
+        }
+  
+        .header-two {
+          height: 50px;
+          gap: 10px;
+          /* margin-left: 1.3rem; */
+        }
+  
+        .header-profile,
+        .header-two {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+  
+        .hm-logo {
+          color: white;
+          display: flex;
+          /* margin-left: -2rem; */
+        }
+  
+        .admin-header .credit-score span {
+          color: white;
+          font-size: 14px;
+          font-weight: 600;
+          color: #ffffff;
+        }
+  
+        @media (max-width: 700px) {
+          .credit-score {
+            display: none;
+          }
+  
+          .admin-header {
+            padding: 14px 7px;
+          }
+  
+          .hm-logo img {
+            width: 150px;
+          }
+  
+          .admin-header .profile-icn {
+            margin-right: 1rem;
+          }
+  
+        }
+      </style>
+  </head>
+  <body>
+    <div class="root">
+      <header class="admin-header">
+        <div class="container">
+          <div class="header-two">
+            <div class="hm-logo text-center">
+              <img
+                src="assets/white_logo.svg"
+                alt="VSL Logo"
+                style="cursor: pointer"
+                onclick="window.location.href='#'"
+              />
+            </div>
+            <div class="header-profile">
+              <div class="credit-score">
+                <span>Credits Remaining:</span> <span>10</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="content">
+        <div class="process_block">
+          <div class="actions">
+            <a
+              href="#"
+              style="display: flex; align-items: center; margin-right: 32px"
+            >
+              <img src="/assets/icons/arrow_left.svg" alt="arrow" />
+            </a>
+            <h5>Processing</h5>
+          </div>
+          <h4>
+            Loading
+            <span></span><span></span><span></span>
+            <div id="progress">50%</div>
+          </h4>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
